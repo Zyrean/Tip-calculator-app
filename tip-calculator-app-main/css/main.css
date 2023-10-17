@@ -1,0 +1,269 @@
+.wrapper {
+  width: 320px;
+  height: fit-content;
+  align-self: center;
+}
+
+.img-logo {
+  margin: 40px 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-all {
+  width: 390px;
+  height: fit-content;
+  /* height: 500px; */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.container-bill,
+.container-people {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px;
+}
+
+.container-people div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-bill,
+.label-tip,
+.label-people,
+.label-error {
+  font-size: 1.6rem;
+  color: var(--darkGrayCyan);
+  margin-bottom: 10px;
+}
+
+.label-error {
+  color: rgb(225, 104, 49);
+}
+
+.input-bill,
+.input-custom,
+.input-people {
+  width: 100%;
+  height: 40px;
+  border: 0px;
+  background-color: var(--veryLightGrayCyan);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-bill:hover,
+.input-custom:hover,
+.input-people:hover {
+  outline: 2px solid var(--strongcyan);
+}
+
+.input-bill::placeholder,
+.input-custom::placeholder,
+.input-people::placeholder {
+  color: var(--darkGrayCyan);
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+  text-align: right;
+  padding-right: 14px;
+  vertical-align: middle;
+}
+
+/* MAKING INPUT MORE MIDDLE BUT INPUT SHOULD NOT GET BIGGER */
+.input-bill:focus,
+.input-custom:focus,
+.input-people:focus {
+  outline: none;
+  outline: 2px solid var(--strongcyan);
+  font-size: 1.6rem;
+  font-family: "Space Mono", monospace;
+  text-align: right;
+  color: var(--veryDarkCyan);
+  /* padding-right: 14px; */
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.img-dollar {
+  position: absolute;
+  bottom: 16%;
+  left: 4%;
+}
+
+.container-tips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 10px 0px 30px;
+}
+
+.container-tips button {
+  height: 50px;
+  width: 152px;
+  border-radius: 4px;
+  border: 0px;
+  background-color: var(--veryDarkCyan);
+  color: white;
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+}
+
+.container-tips button:hover {
+  cursor: pointer;
+  background-color: var(--lightGrayCyan);
+  color: var(--veryDarkCyan);
+}
+
+.container-tips input {
+  height: 50px;
+  width: 144px;
+}
+
+.input-custom::placeholder {
+  text-align: center;
+  padding: 0px;
+}
+
+.container-totals {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: fit-content;
+  background-color: var(--veryDarkCyan);
+  border-radius: 10px;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+.container-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.information-tip {
+  margin-left: 20px;
+}
+
+.information-tip :nth-child(1) {
+  font-size: 1.6rem;
+  color: var(--veryLightGrayCyan);
+  margin-bottom: 0px;
+}
+
+.information-tip :nth-child(2) {
+  font-size: 1.2rem;
+  color: var(--darkGrayCyan);
+  margin-top: 0px;
+}
+
+.information-amount {
+  margin-right: 20px;
+}
+
+.information-amount :nth-child(1) {
+  font-size: 3rem;
+  color: var(--strongcyan);
+  margin: 0px;
+}
+
+.btn-reset {
+  height: 50px;
+  width: 290px;
+  border-radius: 4px;
+  border: 0px;
+  background-color: var(--strongcyan);
+  color: var(--veryDarkCyan);
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+  align-self: center;
+  margin: 30px 0px 20px;
+  cursor: pointer;
+}
+
+.btn-reset:hover {
+  background-color: var(--lightGrayCyan);
+}
+
+/*---------------------------------------------------------------------------*/
+
+/* DESKTOP */
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 900px;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .img-logo {
+    margin: 80px 0px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-all {
+    width: 960px;
+    align-items: center;
+  }
+
+  .container-inputs {
+    width: 420px;
+    margin-left: 10px;
+  }
+
+  .container-totals {
+    width: 420px;
+    height: 360px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    align-self: center;
+  }
+
+  .container-bill,
+  .container-people {
+    margin: 40px 0px;
+  }
+
+  .container-tips input {
+    width: 126px;
+  }
+
+  .container-tips button {
+    width: 129px;
+  }
+
+  .container-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .information-tip {
+    margin-left: 30px;
+  }
+
+  .information-amount {
+    margin-right: 30px;
+  }
+
+  .information-amount :nth-child(1) {
+    font-size: 3rem;
+    color: var(--strongcyan);
+    margin: 0px;
+  }
+
+  .btn-reset {
+    width: 360px;
+    margin: 140px 0px 30px;
+    /* align-self: flex-end; */
+  }
+}

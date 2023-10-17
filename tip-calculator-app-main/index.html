@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <section class="calculator">
+      <img class="img-logo" src="images/logo.svg" alt="" />
+      <div class="container-all">
+        <div class="wrapper">
+          <div class="container-inputs">
+            <div class="container-bill">
+              <label class="label-bill" for="input-bill">Bill</label>
+              <input class="input-bill" type="text" name="bill" id="bill" maxlength="8" placeholder="0" required />
+              <img class="img-dollar" src="images/icon-dollar.svg" alt="" />
+            </div>
+            <div class="container-tip">
+              <label class="label-tip" for="container-tips">Select Tip %</label>
+              <div class="container-tips">
+                <button>5%</button>
+                <button>10%</button>
+                <button>15%</button>
+                <button>25%</button>
+                <button>50%</button>
+                <input
+                  class="input-custom"
+                  type="text"
+                  name="custom"
+                  id="custom"
+                  maxlength="3"
+                  placeholder="Custom"
+                  required
+                />
+              </div>
+            </div>
+            <div class="container-people">
+              <div>
+                <label class="label-people" for="input-people">Number of People</label>
+                <label class="label-error" for="input-people">Can't be zero</label>
+              </div>
+              <input
+                class="input-people"
+                type="text"
+                name="people"
+                id="people"
+                maxlength="3"
+                placeholder="0"
+                required
+              />
+              <img class="img-dollar" src="images/icon-person.svg" alt="" />
+            </div>
+          </div>
+          <div class="container-totals">
+            <div class="container-information">
+              <div class="information-tip">
+                <p>Tip Amount</p>
+                <p>/ person</p>
+              </div>
+              <div class="information-amount">
+                <p>$4.27</p>
+              </div>
+            </div>
+            <div class="container-information">
+              <div class="information-tip">
+                <p>Total</p>
+                <p>/ person</p>
+              </div>
+              <div class="information-amount">
+                <p>$32.79</p>
+              </div>
+            </div>
+            <button class="btn-reset">RESET</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="js/main.js"></script>
+</html>
