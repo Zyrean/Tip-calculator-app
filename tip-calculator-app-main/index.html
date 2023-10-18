@@ -18,24 +18,35 @@
         <div class="wrapper">
           <div class="container-inputs">
             <div class="container-bill">
-              <label class="label-bill" for="input-bill">Bill</label>
-              <input class="input-bill" type="text" name="bill" id="bill" maxlength="8" placeholder="0" required />
+              <div>
+                <label class="label-bill" for="input-bill">Bill</label>
+                <label class="label-error-bill hidden" for="input-people">Can't be zero</label>
+              </div>
+              <input
+                class="inp inp-reset input-bill"
+                type="text"
+                name="bill"
+                id="bill"
+                maxlength="8"
+                placeholder="0"
+                required
+              />
               <img class="img-dollar" src="images/icon-dollar.svg" alt="" />
             </div>
             <div class="container-tip">
               <label class="label-tip" for="container-tips">Select Tip %</label>
               <div class="container-tips">
-                <button>5%</button>
-                <button>10%</button>
-                <button>15%</button>
-                <button>25%</button>
-                <button>50%</button>
+                <button class="btn-tip" data-percent="5">5%</button>
+                <button class="btn-tip" data-percent="10">10%</button>
+                <button class="btn-tip" data-percent="15">15%</button>
+                <button class="btn-tip" data-percent="25">25%</button>
+                <button class="btn-tip" data-percent="50">50%</button>
                 <input
-                  class="input-custom"
+                  class="inp-reset input-custom"
                   type="text"
                   name="custom"
                   id="custom"
-                  maxlength="3"
+                  maxlength="2"
                   placeholder="Custom"
                   required
                 />
@@ -44,10 +55,10 @@
             <div class="container-people">
               <div>
                 <label class="label-people" for="input-people">Number of People</label>
-                <label class="label-error" for="input-people">Can't be zero</label>
+                <label class="label-error-people hidden" for="input-people">Can't be zero</label>
               </div>
               <input
-                class="input-people"
+                class="inp inp-reset input-people"
                 type="text"
                 name="people"
                 id="people"
@@ -65,7 +76,7 @@
                 <p>/ person</p>
               </div>
               <div class="information-amount">
-                <p>$4.27</p>
+                <p class="total-tip">$0</p>
               </div>
             </div>
             <div class="container-information">
@@ -74,7 +85,7 @@
                 <p>/ person</p>
               </div>
               <div class="information-amount">
-                <p>$32.79</p>
+                <p class="total-bill">$0</p>
               </div>
             </div>
             <button class="btn-reset">RESET</button>
