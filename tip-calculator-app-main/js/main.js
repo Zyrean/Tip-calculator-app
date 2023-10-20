@@ -1,9 +1,3 @@
-// Your users should be able to:
-
-// - View the optimal layout for the app depending on their device's screen size
-// - See hover states for all interactive elements on the page
-// - Calculate the correct tip and total cost of the bill per person
-
 "use strict";
 
 const inputAll = document.querySelectorAll(".inp-reset");
@@ -14,26 +8,15 @@ const inputPeople = document.querySelector(".input-people");
 
 const labelErrorBill = document.querySelector(".label-error-bill");
 const labelErrorPeople = document.querySelector(".label-error-people");
+const labelTipAmount = document.querySelector(".total-tip");
+const labelTotalAmount = document.querySelector(".total-bill");
 
 const btnTips = document.querySelectorAll(".btn-tip");
-
-const tipAmount = document.querySelector(".total-tip");
-const totalAmount = document.querySelector(".total-bill");
-
 const btnReset = document.querySelector(".btn-reset");
-const TESTBUTTON = document.querySelector(".img-logo");
+const btnConfirm = document.querySelector(".btn-confirm");
 
 let percent = 0;
 let isOk = false;
-
-// Calculate tip per Person and total per Person
-const calcTipAmount = function (bill = 0, tipPerc = 0, people = 0) {
-  const tip = ((+bill / 100) * tipPerc).toFixed(2);
-  const tipPerPerson = (tip / +people).toFixed(2);
-
-  tipAmount.textContent = `$${tipPerPerson}`;
-  totalAmount.textContent = `$${((+bill + +tip) / +people).toFixed(2)}`;
-};
 
 const hideError = function () {
   labelErrorBill.classList.add("hidden");
@@ -48,6 +31,19 @@ const displayError = function (ele, errorStr) {
 const displayBorder = (ele) => (ele.style.outline = "2px solid rgb(225, 104, 49)");
 
 const hideBorder = () => inputBandP.forEach((ele) => (ele.style.outline = "none"));
+
+const colorReset = () => btnTips.forEach((btn) => (btn.style.backgroundColor = "hsl(183, 100%, 15%)"));
+
+// Calculate tip per Person and total per Person
+const calcTipAmount = function (bill = 0, tipPerc = 0, people = 0) {
+  const tip = ((+bill / 100) * tipPerc).toFixed(2);
+  const tipPerPerson = (tip / +people).toFixed(2);
+
+  labelTipAmount.textContent = `$${isNaN(tipPerPerson) ? "0.00" : tipPerPerson}`;
+  labelTotalAmount.textContent = `$${
+    isNaN(((+bill + +tip) / +people).toFixed(2)) ? "0.00" : ((+bill + +tip) / +people).toFixed(2)
+  }`;
+};
 
 // Loops over "bill" and "people" input and calls error function if input is empty or NaN
 const checkInputs = function () {
@@ -74,11 +70,11 @@ const startCon = function () {
 // If !custom-input takes it value as percent
 const checkTipAmount = function () {
   if (!inputCustom.value) {
-    btnTips.forEach((btn) =>
+    btnTips.forEach((btn) => {
       btn.addEventListener("click", function (e) {
         percent = e.target.dataset.percent;
-      })
-    );
+      });
+    });
     isOk = true;
   } else {
     percent = inputCustom.value;
@@ -86,18 +82,40 @@ const checkTipAmount = function () {
   }
 };
 
+checkTipAmount();
+
+// Resetting all inputs
 const reset = function () {
   hideError();
   hideBorder();
+  colorReset();
   inputAll.forEach((ele) => (ele.value = ""));
+  labelTipAmount.textContent = `$0.00`;
+  labelTotalAmount.textContent = `$0.00`;
 };
 
-TESTBUTTON.addEventListener("click", function (e) {
-  startCon();
-  checkTipAmount();
-  if (percent !== 0) calcTipAmount(inputBill.value, percent, inputPeople.value);
+// Looping over buttons and resetting background everytime button gets clicked
+btnTips.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    colorReset();
+    inputCustom.value = "";
+    btn.style.backgroundColor = "hsl(185, 41%, 84%)";
+  });
 });
 
-btnReset.addEventListener("click", function (e) {
+inputCustom.addEventListener("click", function () {
+  colorReset();
+});
+
+btnConfirm.addEventListener("click", function () {
+  startCon();
+  checkTipAmount();
+
+  if (percent && inputBill.value && inputPeople.value) {
+    calcTipAmount(inputBill.value, percent, inputPeople.value);
+  }
+});
+
+btnReset.addEventListener("click", function () {
   reset();
 });
