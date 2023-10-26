@@ -28,20 +28,27 @@ const displayError = function (ele, errorStr) {
   ele.textContent = errorStr;
 };
 
-const displayBorder = (ele) => (ele.style.outline = "2px solid rgb(225, 104, 49)");
+const displayBorder = (ele) =>
+  (ele.style.outline = "2px solid rgb(225, 104, 49)");
 
-const hideBorder = () => inputBandP.forEach((ele) => (ele.style.outline = "none"));
+const hideBorder = () =>
+  inputBandP.forEach((ele) => (ele.style.outline = "none"));
 
-const colorReset = () => btnTips.forEach((btn) => (btn.style.backgroundColor = "hsl(183, 100%, 15%)"));
+const colorReset = () =>
+  btnTips.forEach((btn) => (btn.style.backgroundColor = "hsl(183, 100%, 15%)"));
 
 // Calculate tip per Person and total per Person
 const calcTipAmount = function (bill = 0, tipPerc = 0, people = 0) {
   const tip = ((+bill / 100) * tipPerc).toFixed(2);
   const tipPerPerson = (tip / +people).toFixed(2);
 
-  labelTipAmount.textContent = `$${isNaN(tipPerPerson) ? "0.00" : tipPerPerson}`;
+  labelTipAmount.textContent = `$${
+    isNaN(tipPerPerson) ? "0.00" : tipPerPerson
+  }`;
   labelTotalAmount.textContent = `$${
-    isNaN(((+bill + +tip) / +people).toFixed(2)) ? "0.00" : ((+bill + +tip) / +people).toFixed(2)
+    isNaN(((+bill + +tip) / +people).toFixed(2))
+      ? "0.00"
+      : ((+bill + +tip) / +people).toFixed(2)
   }`;
 };
 
@@ -49,10 +56,16 @@ const calcTipAmount = function (bill = 0, tipPerc = 0, people = 0) {
 const checkInputs = function () {
   inputBandP.forEach((inpF) => {
     if (!inpF.value) {
-      displayError(document.querySelector(`.label-error-${inpF.id}`), "Can't be zero");
+      displayError(
+        document.querySelector(`.label-error-${inpF.id}`),
+        "Can't be zero"
+      );
       displayBorder(inpF);
     } else if (isNaN(inpF.value)) {
-      displayError(document.querySelector(`.label-error-${inpF.id}`), "Numbers only");
+      displayError(
+        document.querySelector(`.label-error-${inpF.id}`),
+        "Numbers only"
+      );
       displayBorder(inpF);
     }
   });
@@ -92,6 +105,7 @@ const reset = function () {
   inputAll.forEach((ele) => (ele.value = ""));
   labelTipAmount.textContent = `$0.00`;
   labelTotalAmount.textContent = `$0.00`;
+  percent = 0;
 };
 
 // Looping over buttons and resetting background everytime button gets clicked
@@ -108,6 +122,7 @@ inputCustom.addEventListener("click", function () {
 });
 
 btnConfirm.addEventListener("click", function () {
+  console.log(percent);
   startCon();
   checkTipAmount();
 

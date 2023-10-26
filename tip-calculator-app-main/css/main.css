@@ -15,6 +15,11 @@
   cursor: pointer;
 }
 
+
+
+
+
+
 .container-all {
   width: 390px;
   height: fit-content;
@@ -132,13 +137,8 @@ input:focus::placeholder {
 .container-tips button:hover {
   cursor: pointer;
   background-color: var(--lightGrayCyan);
-  /* color: var(--veryDarkCyan); */
 }
 
-/* .container-tips button:focus {
-  background-color: hsl(172, 67%, 45%);
-  color: var(--veryDarkCyan);
-} */
 
 .container-tips input {
   height: 50px;
